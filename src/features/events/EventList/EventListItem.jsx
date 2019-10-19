@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import { Segment, Item, Icon, List, Button, ButtonContent } from 'semantic-ui-react'
-import EventListAttendee from './EventListAttendee'
+import React, { Component } from '../../../../node_modules/react'
+import { Segment, Item, Icon, List, Button} from '../../../../node_modules/semantic-ui-react'
+import EventListAttendee from '../EventList/EventListAttendee'
 
 export default class EventListItem extends Component {
     render() {
-        const {event} = this.props;
+        const {event, selectEvent, deleteEvent} = this.props;
         return (
         
                  <Segment.Group>
@@ -37,8 +37,9 @@ export default class EventListItem extends Component {
                       </List>
                     </Segment>
                     <Segment clearing>
-                        <span>{event.description}</span>
-                      <Button as="a" color="teal" floated="right" content="View" />
+                      <span>{event.description}</span>
+                      <Button onClick={()=>deleteEvent(event.id)} as="a" color="red" floated="right" content="Delete" />
+                      <Button onClick={()=>selectEvent(event)} as="a" color="teal" floated="right" content="View" />
                     </Segment>
                  </Segment.Group>
         )
